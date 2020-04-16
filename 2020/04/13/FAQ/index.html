@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="安装程序装完数据库，bin下面没有disql文件是怎么回事？ 原因：是因为安装的时候未选择数据库服务组件，所以只有客户端组件，不包含相关的dm命令行工具解决：1、从已经安装了达梦数据库服务组件的安装文件下复制一个bin，覆盖当前安装目录下的bin。2、重新安装数据库，选择数据库服务组件  安装达梦数据库后LD_LIBRARY_PATH如何设置？ 当使用达梦的驱动（如unixodbc、dci、dpi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FAQ">
+<meta property="og:url" content="http://yoursite.com/2020/04/13/FAQ/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装程序装完数据库，bin下面没有disql文件是怎么回事？ 原因：是因为安装的时候未选择数据库服务组件，所以只有客户端组件，不包含相关的dm命令行工具解决：1、从已经安装了达梦数据库服务组件的安装文件下复制一个bin，覆盖当前安装目录下的bin。2、重新安装数据库，选择数据库服务组件  安装达梦数据库后LD_LIBRARY_PATH如何设置？ 当使用达梦的驱动（如unixodbc、dci、dpi">
+<meta property="article:published_time" content="2020-04-13T07:09:02.000Z">
+<meta property="article:modified_time" content="2020-04-13T07:41:24.631Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/13/FAQ/"/>
+
+
+
+
+
+  <title>FAQ | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/13/FAQ/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">FAQ</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-13T15:09:02+08:00">
+                2020-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h1><h2 id="装完数据库，bin下面没有disql文件是怎么回事？"><a href="#装完数据库，bin下面没有disql文件是怎么回事？" class="headerlink" title="装完数据库，bin下面没有disql文件是怎么回事？"></a>装完数据库，bin下面没有disql文件是怎么回事？</h2><blockquote>
+<p><strong>原因：</strong><br>是因为安装的时候未选择数据库服务组件，所以只有客户端组件，不包含相关的dm命令行工具<br><strong>解决：</strong><br>1、从已经安装了达梦数据库服务组件的安装文件下复制一个bin，覆盖当前安装目录下的bin。<br>2、重新安装数据库，选择数据库服务组件</p>
+</blockquote>
+<h2 id="安装达梦数据库后LD-LIBRARY-PATH如何设置？"><a href="#安装达梦数据库后LD-LIBRARY-PATH如何设置？" class="headerlink" title="安装达梦数据库后LD_LIBRARY_PATH如何设置？"></a>安装达梦数据库后LD_LIBRARY_PATH如何设置？</h2><blockquote>
+<p>当使用达梦的驱动（如unixodbc、dci、dpi、php_dm、pdo_dm等）时可能需要依赖部分达梦提供的动态链接库文件，用户需要设置系统环境变量<br>LD_LIBRARY_PATH，将达梦数据库的执行码路径添加进去，以linux上达梦默认安装位置/opt/dmdbms/bin为例：<br><code>方法一：LD_LIBRARY_PATH=$ LD_LIBRARY_PATH:/opt/dmdbms/bin 但是退出当前终端后就失效。</code><br><code>方法二：修改/.bashrc或~/.bash_profile或系统级别的/etc/profile 添加export
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/dmdbms/bin</code></p>
+</blockquote>
+<h2 id="达梦数据库的数据文件存放路径在哪？"><a href="#达梦数据库的数据文件存放路径在哪？" class="headerlink" title="达梦数据库的数据文件存放路径在哪？"></a>达梦数据库的数据文件存放路径在哪？</h2><blockquote>
+<p>达梦数据库的数据文件存放路径是根据项目要求进行存放的，没有一个特定的路径，一般情况下，由达梦工程师进行安装部署的达梦数据库，部署后会提供一份部署文档，其中包含相应的路径信息，如果没有请参考下面方法。<br>下面简单介绍几种找到数据文件路径的方法：<br>1.询问数据库的管理和维护人员，这是他们应该了解的最基本信息之一。<br>2. 如果是Windows或有图形化界面的Linux，可以尝试通过“DM服务查看器”工具，找到DmService开头的服务，点击右键选择“属性”，在“服务属性中”的“配置文件路径”一项的路径即为数据文件路径；<br>注：如果在“DM服务查看器”中找不到相应的服务，可能服务没有注册或用其他方式进行了启动，请参考后面方法。</p>
+<p>3.无论Window还是Linux系统，在系统中搜索“MAIN.DBF”文件，已最新的文件为准，该文件所在的目录既是数据库文件所在路径。<br>4.Linux系统，通过ps -ef|grep dmserver 命令查看进程的方式找到相应的路径。  </p>
+<p>备注：这个达梦目录的一个说明<br>dmdbms目录：数据库安装目录。<br> bin目录：数据库核心文件目录。<br>data目录：数据库实例文件存放目录。<br>doc目录：数据库手册(安装手册，系统管理员手册，SQL语言使用手册等)存放目录。<br>drivers目录：数据库驱动存放目录。 log目录：数据库日志文件存放目录。<br>samples目录：配置文件样板（dmarch归档文件，dmmal通信文件等）存放目录。<br>tool目录：数据库工具（管理工具，数据迁移工具，审计与分析工具等）存放目录。<br>web目录：web工具（DEM）的连接及配置手册存放目录。<br>license_en：英文《软件产品授权证书》概述。<br>license_zh：中文《软件产品授权证书》概述。<br>release_en：英文达梦数据库管理系统版本号汇总。<br>release_zn：中文达梦数据库管理系统版本号汇总。<br>uninstall.exe：数据库卸载，双击即可按照提示进行数据库的卸载。</p>
+</blockquote>
+<h2 id="无法启动图形化，如何进行安装？"><a href="#无法启动图形化，如何进行安装？" class="headerlink" title="无法启动图形化，如何进行安装？"></a>无法启动图形化，如何进行安装？</h2><blockquote>
+<p> /./Dminstall.bin执行报错执行错 <code>Exception in thread &quot;main&quot;
+java.lang.unsatisfiedLinkError: could not load SWT library. Reasons:no
+swt…....No such file or directory</code><br>1.<br>针对无法启动图形化的服务器或者远程方式，DM7提供纯文本安装方式。<br>安装过程如下： 1、    执行安装文件 [dmdba@RS219 test]$<br>./DMInstall.bin -i Please select the installer’s language (E/e:English<br>C/c:Chinese) [E/e]:c 解压安装程序……… 是否输入Key文件路径? (Y/y:是 N/n:否)<br>[Y/y]:n</p>
+<p>是否设置时区? (Y/y:是 N/n:否) [Y/y]: 设置时区: [ 1]: GTM-12=日界线西 [ 2]:<br>GTM-11=萨摩亚群岛 [ 3]: GTM-10=夏威夷 [ 4]: GTM-09=阿拉斯加 [ 5]:<br>GTM-08=太平洋时间（美国和加拿大） [ 6]: GTM-07=亚利桑那 [ 7]: GTM-06=中部时间（美国和加拿大） [ 8]:<br>GTM-05=东部部时间（美国和加拿大） [ 9]: GTM-04=大西洋时间（美国和加拿大） [10]: GTM-03=巴西利亚<br>[11]: GTM-02=中大西洋 [12]: GTM-01=亚速尔群岛 [13]: GTM=格林威治标准时间 [14]:<br>GTM+01=萨拉热窝 [15]: GTM+02=开罗 [16]: GTM+03=莫斯科 [17]: GTM+04=阿布扎比 [18]:<br>GTM+05=伊斯兰堡 [19]: GTM+06=达卡 [20]: GTM+07=曼谷，河内 [21]: GTM+08=中国标准时间<br>[22]: GTM+09=汉城 [23]: GTM+10=关岛 [24]: GTM+11=所罗门群岛 [25]: GTM+12=斐济<br>[26]: GTM+13=努库阿勒法 [27]: GTM+14=基里巴斯 请选择设置时区 [9]:21 安装类型: 1 典型安装 2 服务器<br>3 客户端 4 自定义 请选择安装类型的数字序号 [1 典型安装]:1 所需空间: 828M</p>
+<p>请选择安装目录 [/home/dmdba/dmdbms]:/home/dmdba/dmdbms 可用空间: 13T<br>是否确认安装路径(/home/dmdba/dmdbms)? (Y/y:是 N/n:否)  [Y/y]:y</p>
+<p>安装前小结 安装位置: /data/dmdata 所需空间: 828M 可用空间: 13T 版本信息:  有效日期:  安装类型: 典型安装<br>是否确认安装? (Y/y:是 N/n:否):y 2019-07-28 22:04:37  [INFO] 安装 default 模块…<br>2019-07-28 22:04:37  [INFO] 安装达梦数据库… 2019-07-28 22:04:39  [INFO] 安装<br>server 模块… 2019-07-28 22:04:39  [INFO] 安装 client 模块… 2019-07-28<br>22:04:39  [INFO] 安装 drivers 模块… 2019-07-28 22:04:39  [INFO] 安装<br>manual 模块… 2019-07-28 22:04:39  [INFO] 安装 service 模块… 2019-07-28<br>22:04:41  [INFO] 移动ant日志文件。 2019-07-28 22:04:41  [INFO] 安装达梦数据库完成。</p>
+<p>请以root系统用户执行命令: /home/dmdba/script/root/root_installer.sh</p>
+<p>安装结束</p>
+<p>2、    用root执行root_installer.sh脚本，数据库安装即可完成  [root@RS219 test]#<br>/home/dmdba/script/root/root_installer.sh 移动<br>/home/dmdba/bin/dm_svc.conf 到/etc目录 修改服务器权限 创建DmAPService服务<br>创建服务(DmAPService)完成 启动DmAPService服务</p>
+<p>2:<br>针对无法启动图形化的服务器，DM7提供了dminit通过命令行初始化实例。系统管理员可以利用该工具提供的各种参数，设置数据库存放路径、段页大小、是否对大小写敏感以及是否使用<br>unicode，创建出满足用户需要的初始数据库。该工具位于安装目录的 bin\目录下，举例如下： [dmdba@ ~]# cd<br>/opt/dmdbms/bin [dmdba@ ~]# ./dminit path=/opt/dmdbms/data<br>注：该工具的详细介绍及使用办法请详细参考《DM7系统管理员手册》7.3章节。</p>
+</blockquote>
+<h2 id="windows达梦数据库卸载不完全，重新装达梦数据库现有服务失败-该实例名已被其他实例占用"><a href="#windows达梦数据库卸载不完全，重新装达梦数据库现有服务失败-该实例名已被其他实例占用" class="headerlink" title="windows达梦数据库卸载不完全，重新装达梦数据库现有服务失败/该实例名已被其他实例占用  "></a>windows达梦数据库卸载不完全，重新装达梦数据库现有服务失败/该实例名已被其他实例占用  </h2><blockquote>
+<p>1：卸载默认不会删除数据库DATA 这是为了保护数据 确定以前的所有数据不要的话才可以删除<br>2：系统的服务管理器里里查看是否有DMserviceDMSERVER<br>3：以管理员开启CMD 然后执行：sc delete “服务名” 如： sc delete DmServiceDMSERVER</p>
+</blockquote>
+<h2 id="启动-重启达梦数据库-失败"><a href="#启动-重启达梦数据库-失败" class="headerlink" title="启动/重启达梦数据库 失败 "></a>启动/重启达梦数据库 失败 </h2><blockquote>
+<p>1：启动失败： 用户可能没有初始化，需要初始化数据库  <a href="http://bbs.dameng.com/forum.php?mod=viewthread&amp;tid=136435&amp;extra=page%3D2" target="_blank" rel="noopener">http://bbs.dameng.com/forum.php?mod=viewthread&amp;tid=136435&amp;extra=page%3D2</a><br>2：参考达梦系统管理员手册，第7章 启动和关闭数据库 ，看是否启动方式错误。 或者可以参考如下链接：<br><a href="https://www.cndba.cn/dave/article/3566" target="_blank" rel="noopener">https://www.cndba.cn/dave/article/3566</a>    3：如下信息来自于达梦数据技术工程，希望也有帮助<br><a href="http://bbs.dameng.com/forum.php?mod=viewthread&amp;tid=44811&amp;extra=page%3D5%26filter%3Dauthor%26orderby%3Ddateline" target="_blank" rel="noopener">http://bbs.dameng.com/forum.php?mod=viewthread&amp;tid=44811&amp;extra=page%3D5%26filter%3Dauthor%26orderby%3Ddateline</a></p>
+</blockquote>
+<h2 id="数据库的页大小，只能通过重新实例化数据库进行修改吗-都有什么参数是事先需要确定好的？"><a href="#数据库的页大小，只能通过重新实例化数据库进行修改吗-都有什么参数是事先需要确定好的？" class="headerlink" title="数据库的页大小，只能通过重新实例化数据库进行修改吗?都有什么参数是事先需要确定好的？"></a>数据库的页大小，只能通过重新实例化数据库进行修改吗?都有什么参数是事先需要确定好的？</h2><blockquote>
+<p>是的，数据库的页大小只能通过重新初始化实例来进行修改。<br>需要事先确定好的参数有字符集，页簇的大小，这些参数配置一定要安装前确认好，以免安装后不能修改造成不必要的麻烦。</p>
+</blockquote>
+<h2 id="簇大小和页大小的设置都会影响什么"><a href="#簇大小和页大小的设置都会影响什么" class="headerlink" title="簇大小和页大小的设置都会影响什么?"></a>簇大小和页大小的设置都会影响什么?</h2><blockquote>
+<p>簇是数据页的上级逻辑单元 ，由同一个数据文件中 16 个或 32个连续的数据页组成。<br>在DM数据库中，簇的大小由用户在创建数据库时指定，默认大小为16。假定某个数据文件 大小为 32MB，页大小为 8KB，则共有<br>32MB/8KB/16=256 个簇，每个簇的大小为<br>8K*16=128K。和数据页的大小一样，一旦创建好数据库，此后该数据库的簇的大小就不能 够改变。 数据页（也称数据块）是 DM<br>数据库中最小的数据存储单元。页的大小对应物理存储空 间上特定数量的存储字节，在 DM 数据库中，页大小可以为 4KB、8KB、16KB或者<br>32KB， 用户在创建数据库时可以指定，默认大小为8KB，一旦创建好了数据库，则在该库的整个生 命周期内，页大小都不能够改变。</p>
+</blockquote>
+<h2 id="是不是每次重启之后达梦数据库就直接自动启动了不用执行什么脚本了？"><a href="#是不是每次重启之后达梦数据库就直接自动启动了不用执行什么脚本了？" class="headerlink" title="是不是每次重启之后达梦数据库就直接自动启动了不用执行什么脚本了？"></a>是不是每次重启之后达梦数据库就直接自动启动了不用执行什么脚本了？</h2><blockquote>
+<ol>
+<li>如果是图形化的方式创建实例：图形化工具会自动创建开启自启服务，所以不需要再进行其他操作就可以让实例开机自启。</li>
+<li>如果是命令行的方式创建实例：需要自己手动注册开机自启的服务，注册自启服务之后，可以实现开机自启。如果没有注册开机自启服务，则不会实现实例的开机自启功能。</li>
+</ol>
+</blockquote>
+<h2 id="安装时提示写入权限不够的问题怎么解决？"><a href="#安装时提示写入权限不够的问题怎么解决？" class="headerlink" title="安装时提示写入权限不够的问题怎么解决？"></a>安装时提示写入权限不够的问题怎么解决？</h2><blockquote>
+<p>提示写入权限不足，则是操作系统层面的权限不足的问题。</p>
+<ol>
+<li>先知道自己是使用哪个用户进行安装达梦数据库。</li>
+<li>然后查看相应的安装目录下是否有对应用户的权限，一般的root用户对应的目录是/opt/dmdbms；dmdba用户对应的目录是/home/dmdba/dmdbms。</li>
+<li>将对应目录的权限使用chmod命令授权给相应的用户。</li>
+</ol>
+</blockquote>
+<h2 id="centos7-6-1810的Docker容器里面以静默方式安装DM7最后一步报错了，提示Openation-not-Permitted"><a href="#centos7-6-1810的Docker容器里面以静默方式安装DM7最后一步报错了，提示Openation-not-Permitted" class="headerlink" title="centos7.6.1810的Docker容器里面以静默方式安装DM7最后一步报错了，提示Openation not Permitted"></a>centos7.6.1810的Docker容器里面以静默方式安装DM7最后一步报错了，提示Openation not Permitted</h2><blockquote>
+<p>docker添加privileged启动参数就好了</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/13/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/13/TiDB/" rel="prev" title="TiDB FAQ">
+                TiDB FAQ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装程序"><span class="nav-number">1.</span> <span class="nav-text">安装程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#装完数据库，bin下面没有disql文件是怎么回事？"><span class="nav-number">1.1.</span> <span class="nav-text">装完数据库，bin下面没有disql文件是怎么回事？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装达梦数据库后LD-LIBRARY-PATH如何设置？"><span class="nav-number">1.2.</span> <span class="nav-text">安装达梦数据库后LD_LIBRARY_PATH如何设置？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#达梦数据库的数据文件存放路径在哪？"><span class="nav-number">1.3.</span> <span class="nav-text">达梦数据库的数据文件存放路径在哪？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无法启动图形化，如何进行安装？"><span class="nav-number">1.4.</span> <span class="nav-text">无法启动图形化，如何进行安装？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows达梦数据库卸载不完全，重新装达梦数据库现有服务失败-该实例名已被其他实例占用"><span class="nav-number">1.5.</span> <span class="nav-text">windows达梦数据库卸载不完全，重新装达梦数据库现有服务失败&#x2F;该实例名已被其他实例占用  </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-重启达梦数据库-失败"><span class="nav-number">1.6.</span> <span class="nav-text">启动&#x2F;重启达梦数据库 失败 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的页大小，只能通过重新实例化数据库进行修改吗-都有什么参数是事先需要确定好的？"><span class="nav-number">1.7.</span> <span class="nav-text">数据库的页大小，只能通过重新实例化数据库进行修改吗?都有什么参数是事先需要确定好的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#簇大小和页大小的设置都会影响什么"><span class="nav-number">1.8.</span> <span class="nav-text">簇大小和页大小的设置都会影响什么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#是不是每次重启之后达梦数据库就直接自动启动了不用执行什么脚本了？"><span class="nav-number">1.9.</span> <span class="nav-text">是不是每次重启之后达梦数据库就直接自动启动了不用执行什么脚本了？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装时提示写入权限不够的问题怎么解决？"><span class="nav-number">1.10.</span> <span class="nav-text">安装时提示写入权限不够的问题怎么解决？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#centos7-6-1810的Docker容器里面以静默方式安装DM7最后一步报错了，提示Openation-not-Permitted"><span class="nav-number">1.11.</span> <span class="nav-text">centos7.6.1810的Docker容器里面以静默方式安装DM7最后一步报错了，提示Openation not Permitted</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
